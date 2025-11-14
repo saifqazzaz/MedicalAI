@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedicalAI Enterprise Documentation</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header>
+        <h1>MedicalAI Enterprise Documentation</h1>
+        <button id="theme-toggle">🌙 Dark Mode</button>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#quickstart">Quick Start</a></li>
+            <li><a href="#users">Pre‑Configured Users</a></li>
+            <li><a href="#directory">Directory Structure</a></li>
+            <li><a href="#live-demo">Live Demo</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>MedicalAI combines a LoRA fine‑tuned medical model, FAISS vector store, automatic daily updates, multi‑user role‑based access, and rate limiting — all deployed via Docker Compose.</p>
+        </section>
+        <section id="architecture">
+            <h2>Architecture</h2>
+            <img src="assets/diagram.png" alt="MedicalAI Architecture Diagram" class="diagram">
+            <details>
+                <summary>ASCII Diagram</summary>
+<pre>
+Users → Nginx → FastAPI → FAISS & LoRA → Auto‑Update
+Daily updates fetch new medical content automatically.
+</pre>
+            </details>
+        </section>
+        <section id="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Secure HTTPS with SSL via Nginx</li>
+                <li>Multi‑user role‑based access: admin, doctor, researcher, viewer</li>
+                <li>Rate limiting per user/IP</li>
+                <li>Automatic updates of medical documents & embeddings</li>
+                <li>GPU support for inference</li>
+                <li>Dockerized deployment with persistent volumes</li>
+            </ul>
+        </section>
+        <section id="quickstart">
+            <h2>Quick Start</h2>
+            <pre>
+chmod +x setup_medicalai_enterprise.sh
+./setup_medicalai_enterprise.sh
+
+Access:
+- Web: https://your‑domain
+- API: https://your‑domain/api
+            </pre>
+        </section>
+        <section id="users">
+            <h2>Pre‑Configured Users</h2>
+            <table>
+                <tr><th>Username</th><th>Role</th><th>Password</th></tr>
+                <tr><td>admin</td><td>Admin</td><td>AdminPass123</td></tr>
+                <tr><td>doctor1</td><td>Doctor</td><td>DoctorPass123</td></tr>
+                <tr><td>researcher1</td><td>Researcher</td><td>ResearchPass123</td></tr>
+                <tr><td>viewer1</td><td>Viewer</td><td>ViewerPass123</td></tr>
+            </table>
+        </section>
+        <section id="directory">
+            <h2>Directory Structure</h2>
+            <pre>
+MedicalAI_RAG/
+├── api/
+├── scripts/
+├── web/
+├── data/
+├── embeddings/
+├── lora_model/
+├── nginx/
+├── certs/
+├── Dockerfile
+├── docker‑compose.yml
+├── setup_medicalai_enterprise.sh
+└── README.md
+            </pre>
+        </section>
+        <section id="live-demo">
+            <h2>Live MedicalAI Demo</h2>
+            <p>Enter your question below and get an answer from the MedicalAI system.</p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Your username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Your password">
+            <label for="question">Question:</label>
+            <textarea id="question" placeholder="Type your medical question here..."></textarea>
+            <button id="ask-btn">Ask MedicalAI</button>
+            <h3>Response:</h3>
+            <pre id="response"></pre>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 MedicalAI. All rights reserved.</p>
+    </footer>
+    <script src="assets/script.js"></script>
+</body>
+</html>
